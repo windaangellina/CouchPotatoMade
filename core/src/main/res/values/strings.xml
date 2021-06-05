@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">Couch Potato</string>
+    <string name="movie_database_in_your_hand">Movie Database In Your Hand</string>
+    <string name="couch_potato">Couch Potato</string>
+    <string name="logo_couch_potato">logo couch potato</string>
+    <string name="search_hint">Enter title</string>
+    <string name="title_activity_catalogue">Catalogue</string>
+    <string name="title_activity_favorite">Favorite Shows</string>
+    <string name="tab_movies">Movies</string>
+    <string name="tab_tv_shows">TV Shows</string>
+    <string name="icon_back" tools:keep="@string/icon_back">icon back</string>
+    <string name="icon_share">icon share</string>
+    <string name="release_date">Release date :</string>
+    <string name="overview">Overview :</string>
+    <string name="search">Search</string>
+    <string name="image_backdrop">image backdrop</string>
+    <string name="image_backdrop_cover">image backdrop cover</string>
+    <string name="image_search">image search</string>
+    <string name="favorite">Favorite</string>
+</resources>

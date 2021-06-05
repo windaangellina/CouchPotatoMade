@@ -1,0 +1,55 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.SubmissionJetpackPro1" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <!-- Font family for app -->
+        <item name="fontFamily">@font/alliance</item>
+
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/yellow</item>
+        <item name="colorPrimaryVariant">@color/black_doff</item>
+        <item name="colorPrimaryDark">@color/brown</item>
+        <item name="android:textColorPrimary">@color/black_doff</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/cream</item>
+        <item name="colorSecondaryVariant">@color/brown</item>
+        <item name="colorOnSecondary">@color/brown</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryDark</item>
+        <!-- Customize your theme here. -->
+        <item name="colorAccent">@color/red</item>
+        <item name="colorControlActivated">@color/red</item>
+        <item name="colorControlHighlight">@color/brown</item>
+    </style>
+
+    <style name="NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="fontFamily">@font/alliance</item>
+
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/yellow</item>
+        <item name="colorPrimaryVariant">@color/black_doff</item>
+        <item name="colorPrimaryDark">@color/brown</item>
+        <item name="android:textColorPrimary">@color/black_doff</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/cream</item>
+        <item name="colorSecondaryVariant">@color/brown</item>
+        <item name="colorOnSecondary">@color/brown</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryDark</item>
+        <!-- Customize your theme here. -->
+        <item name="colorAccent">@color/black_doff</item>
+        <item name="colorControlActivated">@color/white</item>
+        <item name="colorControlHighlight">@color/brown</item>
+    </style>
+
+    <style name="Theme.SubmissionJetpackPro1.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.SubmissionJetpackPro1.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="roundedCornersImageView" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">16dp</item>
+    </style>
+</resources>
