@@ -17,7 +17,6 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles "consumer-rules.pro"
 
         buildConfigField("String", "API_KEY_TMDB", '"0e0818b611e7dfb71928a75cd059f740"')
     }
