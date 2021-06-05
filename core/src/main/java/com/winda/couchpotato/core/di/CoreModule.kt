@@ -8,6 +8,9 @@ import com.winda.couchpotato.core.data.source.local.room.AppDatabase
 import com.winda.couchpotato.core.data.source.remote.RemoteDataSource
 import com.winda.couchpotato.core.data.source.remote.api.ApiService
 import com.winda.couchpotato.core.domain.repository.IMovieDatabaseDataSource
+import net.sqlcipher.database.SQLiteDatabase
+import net.sqlcipher.database.SupportFactory
+import okhttp3.CertificatePinner
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidContext
@@ -25,20 +28,34 @@ object CoreModule {
     val databaseModule = module {
         factory { get<AppDatabase>().movieDao() }
         single {
+            val passphrase: ByteArray = SQLiteDatabase.getBytes("winda".toCharArray())
+            val factory = SupportFactory(passphrase)
+
             Room.databaseBuilder(
                 androidContext(),
                 AppDatabase::class.java,
                 "couch_potato_db"
-            ).fallbackToDestructiveMigration().build()
+            ).fallbackToDestructiveMigration()
+                .openHelperFactory(factory)
+                .build()
         }
     }
 
     val networkModule = module {
         single {
+            val hostname = "developers.themoviedb.org"
+            val certificatePin = CertificatePinner.Builder()
+                .add(hostname, "sha256/MIIFODCCBCCgAwIBAgISAzBXYACh7By4y6Am+ye2ACAYMA0GCSqGSIb3DQEBCwUA")
+                .add(hostname, "sha256/MDIxCzAJBgNVBAYTAlVTMRYwFAYDVQQKEw1MZXQncyBFbmNyeXB0MQswCQYDVQQD")
+                .add(hostname, "sha256/EwJSMzAeFw0yMTA1MTkyMjE3MDlaFw0yMTA4MTcyMjE3MDlaMCQxIjAgBgNVBAMT")
+                .add(hostname, "sha256/aS5sZW5jci5vcmcvMCQGA1UdEQQdMBuCGWRldmVsb3BlcnMudGhlbW92aWVkYi5v")
+                .build()
+
             OkHttpClient.Builder()
                 .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
                 .connectTimeout(120, TimeUnit.SECONDS)
                 .readTimeout(120, TimeUnit.SECONDS)
+                .certificatePinner(certificatePinner = certificatePin)
                 .build()
         }
         single {

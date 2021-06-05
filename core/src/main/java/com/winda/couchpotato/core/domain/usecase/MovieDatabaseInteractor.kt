@@ -2,7 +2,6 @@ package com.winda.couchpotato.core.domain.usecase
 
 import androidx.lifecycle.LiveData
 import com.winda.couchpotato.core.data.network.Resource
-import com.winda.couchpotato.core.data.source.MovieDatabaseRepository
 import com.winda.couchpotato.core.domain.model.Show
 import com.winda.couchpotato.core.domain.repository.IMovieDatabaseDataSource
 import kotlinx.coroutines.flow.Flow
