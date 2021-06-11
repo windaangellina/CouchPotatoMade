@@ -54,7 +54,6 @@ open class MovieDatabaseRepository(
             override fun loadFromDB(): Flow<List<Show>> {
                 val searchQuery = FunctionLibrary.buildLikeQuery(searchKeyword)
                 return localDataSource.getListTvShows(searchQuery).map {
-                    Log.d("MovieDatabaseRepository", "size room get tv shows : ${it.size}")
                     DataMapper.mapShowEntitiesToDomain(it)
                 }
             }

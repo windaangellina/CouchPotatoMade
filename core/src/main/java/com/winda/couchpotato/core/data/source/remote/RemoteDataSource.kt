@@ -1,6 +1,7 @@
 package com.winda.couchpotato.core.data.source.remote
 
 import android.util.Log
+import androidx.annotation.Keep
 import com.winda.couchpotato.core.data.source.remote.api.ApiService
 import com.winda.couchpotato.core.data.source.remote.api.network.ApiResponse
 import com.winda.couchpotato.core.data.source.remote.api.response.search.SearchMovieResponse
@@ -11,6 +12,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 
+@Keep
 open class RemoteDataSource(private val apiService: ApiService) {
     companion object{
         private const val TAG = "RemoteDataSource"

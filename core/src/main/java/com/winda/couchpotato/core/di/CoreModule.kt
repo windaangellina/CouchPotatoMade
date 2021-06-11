@@ -43,14 +43,13 @@ object CoreModule {
 
     val networkModule = module {
         single {
-            val hostname = "developers.themoviedb.org"
+            val hostname = "api.themoviedb.org"
             val certificatePin = CertificatePinner.Builder()
-                .add(hostname, "sha256/MIIFODCCBCCgAwIBAgISAzBXYACh7By4y6Am+ye2ACAYMA0GCSqGSIb3DQEBCwUA")
-                .add(hostname, "sha256/MDIxCzAJBgNVBAYTAlVTMRYwFAYDVQQKEw1MZXQncyBFbmNyeXB0MQswCQYDVQQD")
-                .add(hostname, "sha256/EwJSMzAeFw0yMTA1MTkyMjE3MDlaFw0yMTA4MTcyMjE3MDlaMCQxIjAgBgNVBAMT")
-                .add(hostname, "sha256/aS5sZW5jci5vcmcvMCQGA1UdEQQdMBuCGWRldmVsb3BlcnMudGhlbW92aWVkYi5v")
+                .add(hostname, "sha256/++MBgDH5WGvL9Bcn5Be30cRcL0f5O+NyoXuWtQdX1aI=")
+                .add(hostname, "sha256/+vqZVAzTqUP8BGkfl88yU7SQ3C8J2uNEa55B7RZjEg0=")
+                .add(hostname, "sha256/KwccWaCgrnaw6tsrrSO61FgLacNgG2MMLq8GE6+oP5I=")
+                .add(hostname, "sha256/JSMzqOOrtyOT1kmau6zKhgT676hGgczD5VMdRMyJZFA=")
                 .build()
-
             OkHttpClient.Builder()
                 .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
                 .connectTimeout(120, TimeUnit.SECONDS)
