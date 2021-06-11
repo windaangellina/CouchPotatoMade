@@ -1,5 +1,6 @@
 package com.winda.couchpotato.core.data.source
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.winda.couchpotato.core.data.network.NetworkBoundResource
@@ -30,6 +31,7 @@ open class MovieDatabaseRepository(
             override fun loadFromDB(): Flow<List<Show>> {
                 val searchQuery = FunctionLibrary.buildLikeQuery(searchKeyword)
                 return localDataSource.getListMovies(searchQuery).map {
+                    Log.d("MovieDatabaseRepository", "size room get movies : ${it.size}")
                     DataMapper.mapShowEntitiesToDomain(it)
                 }
             }
@@ -52,6 +54,7 @@ open class MovieDatabaseRepository(
             override fun loadFromDB(): Flow<List<Show>> {
                 val searchQuery = FunctionLibrary.buildLikeQuery(searchKeyword)
                 return localDataSource.getListTvShows(searchQuery).map {
+                    Log.d("MovieDatabaseRepository", "size room get tv shows : ${it.size}")
                     DataMapper.mapShowEntitiesToDomain(it)
                 }
             }

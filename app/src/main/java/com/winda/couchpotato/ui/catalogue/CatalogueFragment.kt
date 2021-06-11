@@ -37,6 +37,7 @@ class CatalogueFragment : Fragment() {
     private var listShow = ArrayList<Show>()
 
     // viewModel
+    @FlowPreview
     private val showsViewModel : ShowsViewModel by viewModel()
 
     // arguments
@@ -71,6 +72,7 @@ class CatalogueFragment : Fragment() {
         return binding.root
     }
 
+    @ExperimentalCoroutinesApi
     @FlowPreview
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -124,6 +126,8 @@ class CatalogueFragment : Fragment() {
         })
     }
 
+    @FlowPreview
+    @ExperimentalCoroutinesApi
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
         inflater.inflate(R.menu.option_search, menu)
@@ -163,9 +167,6 @@ class CatalogueFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
             R.id.favorite_menu -> {
-//                val favoriteIntent = Intent(requireContext(), FavoriteActivity::class.java)
-//                startActivity(favoriteIntent)
-
                 val uri = Uri.parse("couchpotatoapp://favorite")
                 startActivity(Intent(Intent.ACTION_VIEW, uri))
             }
@@ -173,6 +174,7 @@ class CatalogueFragment : Fragment() {
         return super.onOptionsItemSelected(item)
     }
 
+    @ExperimentalCoroutinesApi
     @FlowPreview
     private fun observeLoadingStatus(){
         showsViewModel.loadingStatus.observe(viewLifecycleOwner, {
@@ -183,6 +185,7 @@ class CatalogueFragment : Fragment() {
         })
     }
 
+    @ExperimentalCoroutinesApi
     @FlowPreview
     private fun observeResponseCode(){
         showsViewModel.responseCode.observe(viewLifecycleOwner, {
@@ -238,6 +241,8 @@ class CatalogueFragment : Fragment() {
                     Status.SUCCESS -> {
                         listShow.clear()
                         resourceList.data?.let { listShow.addAll(it) }
+                        FunctionLibrary.makeToast(requireContext(),
+                            "size : ${listShow.size}")
 
                         if (listShow.size == 0) {
                             setImageStatusVisibility(showImage = true, noResult = true, isError = false)

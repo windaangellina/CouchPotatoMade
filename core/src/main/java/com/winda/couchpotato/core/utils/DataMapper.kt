@@ -39,7 +39,7 @@ object DataMapper {
         id = input.showId,
         posterUrl = input.posterUrl,
         backdropUrl = input.backdropUrl,
-        title = input.title,
+        title = input.title!!,
         releaseDateEpoch = input.releaseDateEpoch,
         userScores = input.userScores,
         overview = input.overview

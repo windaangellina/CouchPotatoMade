@@ -1,8 +1,10 @@
 package com.winda.couchpotato.core.domain.model
 
+import android.os.Build
 import android.os.Parcelable
+import androidx.annotation.RequiresApi
 import com.winda.couchpotato.core.utils.FunctionLibrary
-import kotlinx.android.parcel.Parcelize
+import kotlinx.parcelize.Parcelize
 import java.time.format.DateTimeFormatter
 import java.util.*
 
@@ -11,11 +13,12 @@ class Show(
     val showId : Int,
     val posterUrl : String?,
     val backdropUrl : String?,
-    val title: String,
+    val title: String?,
     val releaseDateEpoch : Long,
     val userScores : Int,
-    val overview : String
+    val overview : String?
 ) : Parcelable {
+    @RequiresApi(Build.VERSION_CODES.O)
     fun getReleaseDateAsString() : String? {
         // unix timestamps uses seconds while java measures time in milliseconds -> hence * 1000
         val date = FunctionLibrary.getLocalDateTimeFromLong(releaseDateEpoch * 1000L)
@@ -32,7 +35,8 @@ class Show(
         return "$userScores %"
     }
 
-    fun getTitleWithReleaseYear() : String{
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun getTitleWithReleaseYear() : String? {
         // unix timestamps uses seconds while java measures time in milliseconds -> hence * 1000
         val releaseDate = FunctionLibrary.getLocalDateTimeFromLong(releaseDateEpoch * 1000L)
 

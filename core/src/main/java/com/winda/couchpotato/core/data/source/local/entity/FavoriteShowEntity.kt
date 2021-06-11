@@ -15,7 +15,7 @@ class FavoriteShowEntity (
     val title: String,
     val releaseDateEpoch : Long,
     val userScores : Int,
-    val overview : String) : Parcelable {
+    val overview : String?) : Parcelable {
 
     companion object {
         const val TABLE_NAME = "favorite_show"

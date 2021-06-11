@@ -23,6 +23,8 @@ class FavoriteActivity : AppCompatActivity() {
     private lateinit var showsAdapter: RecyclerShowAdapter
     private var listShow = ArrayList<Show>()
 
+    @FlowPreview
+    @ExperimentalCoroutinesApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 

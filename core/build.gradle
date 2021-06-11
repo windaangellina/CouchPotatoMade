@@ -30,6 +30,11 @@ android {
     }
 
     buildTypes {
+//        release {
+//            minifyEnabled false
+//            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+//        }
+
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
@@ -73,6 +78,7 @@ dependencies {
 
     // room
     implementation "androidx.room:room-runtime:$roomRuntimeVersion"
+    implementation "androidx.room:room-ktx:2.3.0"
     kapt "androidx.room:room-compiler:$roomVersion"
     androidTestImplementation "androidx.room:room-testing:$roomVersion"
 
