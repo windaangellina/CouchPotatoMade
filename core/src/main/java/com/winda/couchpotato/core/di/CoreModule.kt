@@ -31,12 +31,19 @@ object CoreModule {
             val passphrase: ByteArray = SQLiteDatabase.getBytes("winda".toCharArray())
             val factory = SupportFactory(passphrase)
 
+//            Room.databaseBuilder(
+//                androidContext(),
+//                AppDatabase::class.java,
+//                "couch_potato_db"
+//            ).fallbackToDestructiveMigration()
+//                .openHelperFactory(factory)
+//                .build()
+
             Room.databaseBuilder(
                 androidContext(),
                 AppDatabase::class.java,
                 "couch_potato_db"
             ).fallbackToDestructiveMigration()
-                .openHelperFactory(factory)
                 .build()
         }
     }

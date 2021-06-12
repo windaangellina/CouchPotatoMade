@@ -26,18 +26,19 @@ open class MovieDatabaseRepository(
     override val isLoading = MutableLiveData<Boolean>()
     override val responseCode = MutableLiveData<Int>()
 
+    private val TAG = "MovieDatabaseRepository"
+
     override fun getSearchMoviesResult(searchKeyword: String): Flow<Resource<List<Show>>> {
         return object : NetworkBoundResource<List<Show>, SearchMovieResponse>() {
             override fun loadFromDB(): Flow<List<Show>> {
                 val searchQuery = FunctionLibrary.buildLikeQuery(searchKeyword)
                 return localDataSource.getListMovies(searchQuery).map {
-                    Log.d("MovieDatabaseRepository", "size room get movies : ${it.size}")
                     DataMapper.mapShowEntitiesToDomain(it)
                 }
             }
             override fun shouldFetch(data: List<Show>?): Boolean =
                 data == null || data.isEmpty()
-                //true
+            //true
 
             override suspend fun createCall(): Flow<ApiResponse<SearchMovieResponse>> =
                 remoteDataSource.getSearchMovieResult(searchKeyword)
@@ -53,21 +54,29 @@ open class MovieDatabaseRepository(
         return object : NetworkBoundResource<List<Show>, SearchTvShowsResponse>(){
             override fun loadFromDB(): Flow<List<Show>> {
                 val searchQuery = FunctionLibrary.buildLikeQuery(searchKeyword)
-                return localDataSource.getListTvShows(searchQuery).map {
+                val result = localDataSource.getListTvShows(searchKeyword = searchQuery)
+                return result.map {
                     DataMapper.mapShowEntitiesToDomain(it)
                 }
             }
 
             override fun shouldFetch(data: List<Show>?): Boolean =
                 data == null || data.isEmpty()
-                //true
+            //true
 
             override suspend fun createCall(): Flow<ApiResponse<SearchTvShowsResponse>> =
                 remoteDataSource.getSearchTvShowResult(searchKeyword)
 
             override suspend fun saveCallResult(data: SearchTvShowsResponse) {
                 val listEntity = DataMapper.mapSearchTvResponseToShowEntities(data)
-                localDataSource.insertTvShows(listEntity)
+                if (listEntity.isEmpty()){
+                    Log.d(TAG, "size saveCallResult tv shows : empty")
+                }
+                else{
+                    localDataSource.insertTvShows(listEntity)
+                    Log.d(TAG, "size saveCallResult tv shows : ${listEntity.size}")
+                }
+
             }
         }.asFlow()
     }

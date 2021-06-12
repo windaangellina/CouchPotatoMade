@@ -12,7 +12,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 
-@Keep
 open class RemoteDataSource(private val apiService: ApiService) {
     companion object{
         private const val TAG = "RemoteDataSource"

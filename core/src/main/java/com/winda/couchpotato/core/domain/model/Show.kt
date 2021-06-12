@@ -13,10 +13,10 @@ class Show(
     val showId : Int,
     val posterUrl : String?,
     val backdropUrl : String?,
-    val title: String?,
+    val title: String,
     val releaseDateEpoch : Long,
     val userScores : Int,
-    val overview : String?
+    val overview : String
 ) : Parcelable {
     @RequiresApi(Build.VERSION_CODES.O)
     fun getReleaseDateAsString() : String? {

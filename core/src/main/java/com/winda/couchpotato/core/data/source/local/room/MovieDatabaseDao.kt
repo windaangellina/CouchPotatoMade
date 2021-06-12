@@ -1,5 +1,6 @@
 package com.winda.couchpotato.core.data.source.local.room
 
+import androidx.annotation.Keep
 import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.winda.couchpotato.core.data.source.local.entity.FavoriteShowEntity
@@ -9,7 +10,6 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface MovieDatabaseDao {
-
     // favorite
     @Query("select * from ${FavoriteShowEntity.TABLE_NAME}")
     fun getListFavorite() : Flow<List<FavoriteShowEntity>>

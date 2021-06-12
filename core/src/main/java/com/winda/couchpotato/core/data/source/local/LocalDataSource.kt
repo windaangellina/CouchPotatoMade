@@ -1,13 +1,11 @@
 package com.winda.couchpotato.core.data.source.local
 
-import androidx.annotation.Keep
 import androidx.lifecycle.LiveData
 import com.winda.couchpotato.core.data.source.local.entity.FavoriteShowEntity
 import com.winda.couchpotato.core.data.source.local.entity.ShowEntity
 import com.winda.couchpotato.core.data.source.local.room.MovieDatabaseDao
 import kotlinx.coroutines.flow.Flow
 
-@Keep
 open class LocalDataSource(private val movieDatabaseDao: MovieDatabaseDao) {
 
     fun getListFavorite() : Flow<List<FavoriteShowEntity>> {

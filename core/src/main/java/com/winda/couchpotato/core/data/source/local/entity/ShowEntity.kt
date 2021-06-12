@@ -13,10 +13,10 @@ class ShowEntity (
     val type : String,
     val posterUrl : String?,
     val backdropUrl : String?,
-    val title: String?,
+    val title: String,
     val releaseDateEpoch : Long,
     val userScores : Int,
-    val overview : String?) : Parcelable {
+    val overview : String) : Parcelable {
 
     companion object {
         const val TABLE_NAME = "shows"

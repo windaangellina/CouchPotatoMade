@@ -1,5 +1,6 @@
 package com.winda.couchpotato.core.utils
 
+import androidx.annotation.Keep
 import com.winda.couchpotato.core.data.source.local.entity.FavoriteShowEntity
 import com.winda.couchpotato.core.data.source.local.entity.ShowEntity
 import com.winda.couchpotato.core.data.source.remote.api.response.search.SearchMovieResponse
@@ -39,7 +40,7 @@ object DataMapper {
         id = input.showId,
         posterUrl = input.posterUrl,
         backdropUrl = input.backdropUrl,
-        title = input.title!!,
+        title = input.title,
         releaseDateEpoch = input.releaseDateEpoch,
         userScores = input.userScores,
         overview = input.overview
@@ -60,8 +61,7 @@ object DataMapper {
         }
 
     fun mapSearchMovieResponseToShowEntities(input : SearchMovieResponse) :
-            List<ShowEntity> =
-        input.searchResultMovieResponses.map { resultDetail ->
+            List<ShowEntity> = input.searchResultMovieResponses.map { resultDetail ->
             ShowEntity(
                 resultDetail.id,
                 ShowEntity.TYPE_MOVIES,
@@ -75,8 +75,7 @@ object DataMapper {
         }
 
     fun mapSearchTvResponseToShowEntities(input : SearchTvShowsResponse) :
-            List<ShowEntity> =
-        input.searchResultTvShowResponses.map { resultDetail ->
+            List<ShowEntity> = input.searchResultTvShowResponses.map { resultDetail ->
             ShowEntity(
                 resultDetail.id,
                 ShowEntity.TYPE_TV,
