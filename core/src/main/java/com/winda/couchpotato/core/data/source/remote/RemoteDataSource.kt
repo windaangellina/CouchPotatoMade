@@ -1,7 +1,6 @@
 package com.winda.couchpotato.core.data.source.remote
 
 import android.util.Log
-import androidx.annotation.Keep
 import com.winda.couchpotato.core.data.source.remote.api.ApiService
 import com.winda.couchpotato.core.data.source.remote.api.network.ApiResponse
 import com.winda.couchpotato.core.data.source.remote.api.response.search.SearchMovieResponse

@@ -1,6 +1,5 @@
 package com.winda.couchpotato.core.utils
 
-import androidx.annotation.Keep
 import com.winda.couchpotato.core.data.source.local.entity.FavoriteShowEntity
 import com.winda.couchpotato.core.data.source.local.entity.ShowEntity
 import com.winda.couchpotato.core.data.source.remote.api.response.search.SearchMovieResponse

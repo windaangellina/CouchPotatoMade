@@ -1,6 +1,5 @@
 package com.winda.couchpotato.core.data.source.local.room
 
-import androidx.annotation.Keep
 import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.winda.couchpotato.core.data.source.local.entity.FavoriteShowEntity

@@ -31,20 +31,20 @@ object CoreModule {
             val passphrase: ByteArray = SQLiteDatabase.getBytes("winda".toCharArray())
             val factory = SupportFactory(passphrase)
 
-//            Room.databaseBuilder(
-//                androidContext(),
-//                AppDatabase::class.java,
-//                "couch_potato_db"
-//            ).fallbackToDestructiveMigration()
-//                .openHelperFactory(factory)
-//                .build()
-
             Room.databaseBuilder(
                 androidContext(),
                 AppDatabase::class.java,
                 "couch_potato_db"
             ).fallbackToDestructiveMigration()
+                .openHelperFactory(factory)
                 .build()
+
+//            Room.databaseBuilder(
+//                androidContext(),
+//                AppDatabase::class.java,
+//                "couch_potato_db"
+//            ).fallbackToDestructiveMigration()
+//                .build()
         }
     }
 
@@ -52,10 +52,7 @@ object CoreModule {
         single {
             val hostname = "api.themoviedb.org"
             val certificatePin = CertificatePinner.Builder()
-                .add(hostname, "sha256/++MBgDH5WGvL9Bcn5Be30cRcL0f5O+NyoXuWtQdX1aI=")
                 .add(hostname, "sha256/+vqZVAzTqUP8BGkfl88yU7SQ3C8J2uNEa55B7RZjEg0=")
-                .add(hostname, "sha256/KwccWaCgrnaw6tsrrSO61FgLacNgG2MMLq8GE6+oP5I=")
-                .add(hostname, "sha256/JSMzqOOrtyOT1kmau6zKhgT676hGgczD5VMdRMyJZFA=")
                 .build()
             OkHttpClient.Builder()
                 .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))

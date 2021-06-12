@@ -18,6 +18,8 @@ import com.winda.couchpotato.core.utils.FunctionLibrary
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
+private const val TAG = "MovieDatabaseRepository"
+
 open class MovieDatabaseRepository(
     private val remoteDataSource: RemoteDataSource,
     private val localDataSource: LocalDataSource) : IMovieDatabaseDataSource {
@@ -25,8 +27,6 @@ open class MovieDatabaseRepository(
     // status
     override val isLoading = MutableLiveData<Boolean>()
     override val responseCode = MutableLiveData<Int>()
-
-    private val TAG = "MovieDatabaseRepository"
 
     override fun getSearchMoviesResult(searchKeyword: String): Flow<Resource<List<Show>>> {
         return object : NetworkBoundResource<List<Show>, SearchMovieResponse>() {

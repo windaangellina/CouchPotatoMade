@@ -20,10 +20,6 @@ class CatalogueActivity : AppCompatActivity() {
     private lateinit var binding : ActivityCatalogueBinding
     private lateinit var broadcastReceiver: BroadcastReceiver
 
-    companion object {
-        private const val TAG = "CatalogueActivity"
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 

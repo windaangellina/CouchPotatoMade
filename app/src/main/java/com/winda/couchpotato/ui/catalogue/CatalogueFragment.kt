@@ -241,9 +241,6 @@ class CatalogueFragment : Fragment() {
                     Status.SUCCESS -> {
                         listShow.clear()
                         resourceList.data?.let { listShow.addAll(it) }
-                        FunctionLibrary.makeToast(requireContext(),
-                            "size : ${listShow.size}")
-
                         if (listShow.size == 0) {
                             setImageStatusVisibility(showImage = true, noResult = true, isError = false)
                         } else {

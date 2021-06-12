@@ -36,7 +36,7 @@ class Show(
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    fun getTitleWithReleaseYear() : String? {
+    fun getTitleWithReleaseYear() : String {
         // unix timestamps uses seconds while java measures time in milliseconds -> hence * 1000
         val releaseDate = FunctionLibrary.getLocalDateTimeFromLong(releaseDateEpoch * 1000L)
 
