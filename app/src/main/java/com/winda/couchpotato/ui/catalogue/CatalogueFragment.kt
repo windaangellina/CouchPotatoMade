@@ -32,7 +32,6 @@ class CatalogueFragment : Fragment() {
 
     // data
     private lateinit var binding: FragmentCatalogueBinding
-    //private lateinit var showsViewModel : ShowsViewModel
     private lateinit var showsAdapter : RecyclerShowAdapter
     private var listShow = ArrayList<Show>()
 

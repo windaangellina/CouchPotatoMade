@@ -86,31 +86,4 @@ object DataMapper {
                 resultDetail.overview
             )
         }
-
-//    fun mapSearchMovieResponseToDomain(input: SearchMovieResponse) : List<Show> =
-//        input.searchResultMovieResponses.map {
-//            Show(
-//                it.id,
-//                it.getPosterUrl(),
-//                it.getBackdropUrl(),
-//                it.title,
-//                it.getReleaseDateEpoch(),
-//                (it.voteAverage * 10).roundToInt(),
-//                it.overview
-//            )
-//        }
-//
-//    fun mapSearchTvShowResponseToDomain(input : SearchTvShowsResponse) : List<Show> =
-//        input.searchResultTvShowResponses.map {
-//            Show(
-//                it.id,
-//                it.getPosterUrl(),
-//                it.getBackdropUrl(),
-//                it.name,
-//                it.getReleaseDateEpoch(),
-//                (it.voteAverage * 10).roundToInt(),
-//                it.overview
-//            )
-//        }
-
 }
