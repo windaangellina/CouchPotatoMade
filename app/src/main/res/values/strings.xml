@@ -5,7 +5,6 @@
     <string name="logo_couch_potato">logo couch potato</string>
     <string name="search_hint">Enter title</string>
     <string name="title_activity_catalogue">Catalogue</string>
-    <string name="title_activity_favorite">Favorite Shows</string>
     <string name="tab_movies">Movies</string>
     <string name="tab_tv_shows">TV Shows</string>
     <string name="icon_back" tools:keep="@string/icon_back">icon back</string>

@@ -43,7 +43,8 @@ class SearchResultTvShowResponse(
         kotlin.runCatching {
             if (firstAirDate != null){
                 firstAirDate.let { dateStr ->
-                    releaseDateEpoch = dateStr?.let { FunctionLibrary.getDateAsLong(it) }!!
+                    releaseDateEpoch = (dateStr?.let { FunctionLibrary.getDateAsLong(it) }
+                        ?: return@let)
                 }
             }
         }.getOrNull()

@@ -42,7 +42,8 @@ class SearchResultMovieResponse(
         kotlin.runCatching {
             if (releaseDate != null){
                 releaseDate.let { dateStr ->
-                    releaseDateEpoch = dateStr?.let { FunctionLibrary.getDateAsLong(it) }!!
+                    releaseDateEpoch = (dateStr?.let { FunctionLibrary.getDateAsLong(it) }
+                        ?: return@let)
                 }
             }
         }.getOrNull()

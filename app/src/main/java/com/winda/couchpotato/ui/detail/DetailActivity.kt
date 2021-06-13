@@ -11,6 +11,7 @@ import com.winda.couchpotato.R
 import com.winda.couchpotato.databinding.ActivityDetailBinding
 import com.winda.couchpotato.core.data.viewmodel.ShowsViewModel
 import com.winda.couchpotato.core.domain.model.Show
+import kotlinx.coroutines.FlowPreview
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DetailActivity : AppCompatActivity() {
@@ -25,6 +26,7 @@ class DetailActivity : AppCompatActivity() {
     private lateinit var countFavorite : LiveData<Int>
     private var isInFavorite : Boolean = false
 
+    @FlowPreview
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -35,7 +37,7 @@ class DetailActivity : AppCompatActivity() {
             show = intent.getParcelableExtra(ARG_SHOW)
         }
 
-        countFavorite = show?.showId?.let { showViewModel.getCountFavoriteById(it) }!!
+        countFavorite = (show?.showId?.let { showViewModel.getCountFavoriteById(it) } ?: return)
         observeCountFavorite()
 
         setComponentValue()
@@ -126,7 +128,7 @@ class DetailActivity : AppCompatActivity() {
         }
 
         // reset count
-        countFavorite = show?.showId?.let { showViewModel.getCountFavoriteById(it) }!!
+        countFavorite = (show?.showId?.let { showViewModel.getCountFavoriteById(it) } ?: return)
 
         val message = "${show?.title} has been $mode favorite"
         Snackbar.make(view, message, Snackbar.LENGTH_SHORT).setAction("Action", null).show()
